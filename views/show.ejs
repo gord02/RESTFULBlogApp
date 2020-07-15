@@ -1,0 +1,28 @@
+<%- include("partials/header") %>
+
+    <div class= "ui main text container segment">
+        <div class="ui hug header"><%=blog.title %> </div>
+        <div class= "ui top attached">
+            <div class= "item">
+                <img class= "ui centered rounded image" src= "<%=blog.image %>">
+                <div class= "content">
+                    <span> <%= blog.created.toDateString() %></span>
+                </div>
+                <div>
+                    <!-- user can now use html -->
+                    <p><%-blog.body %></p>
+                </div>
+            </div>
+            <div>
+                <a class= "ui green basic button" href="/blogs/<%=blog._id %>/edit">Edit</a>
+                <!-- blog is whats is passed into databases so we must use it here to find the id-->
+                <form id= "delete" action="/blogs/<%=blog._id %>?_method=DELETE" method = "POST">
+                    <button id= "right" class=" ui red basic button">Delete</button>
+                </form>
+                    <a id="center" class= "ui blue basic button" href="/blogs">Return</a>
+            </div>
+
+        </div>
+    </div>
+
+<%- include("partials/footer") %>
